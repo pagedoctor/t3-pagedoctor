@@ -1,0 +1,2 @@
+@import 'EXT:pagedoctor/Configuration/TypoScript/ContentElement/Views.typoscript'
+@import 'EXT:pagedoctor/Configuration/TypoScript/ContentElement/Model.typoscript'

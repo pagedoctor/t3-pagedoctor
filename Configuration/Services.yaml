@@ -1,0 +1,23 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Atkins\Pagedoctor\:
+    resource: '../Classes/*'
+
+  Atkins\Pagedoctor\Controller\PingController:
+    public: true
+
+  Atkins\Pagedoctor\Controller\DeploymentController:
+    public: true
+
+  Atkins\Pagedoctor\Controller\ScaffoldController:
+    public: true
+
+  Atkins\Pagedoctor\Backend\Preview\PagedoctorContentPreviewRenderer:
+    public: true
+
+  Atkins\Pagedoctor\DataProcessing\ProjectMappingProcessor:
+    public: true

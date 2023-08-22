@@ -1,0 +1,5 @@
+pagedoctor_deployment < pagedoctor_api
+pagedoctor_deployment.typeNum = 1930611294
+pagedoctor_deployment.10.userFunc = Atkins\Pagedoctor\Controller\DeploymentController->ingress
+pagedoctor_deployment.10.action = create
+pagedoctor_deployment.10.schema = deployment.json

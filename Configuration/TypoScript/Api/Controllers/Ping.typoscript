@@ -1,0 +1,5 @@
+pagedoctor_ping < pagedoctor_api
+pagedoctor_ping.typeNum = 1930611293
+pagedoctor_ping.10.userFunc = Atkins\Pagedoctor\Controller\PingController->ingress
+pagedoctor_ping.10.action = index
+pagedoctor_ping.10.schema = ping.json

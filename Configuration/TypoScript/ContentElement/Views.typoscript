@@ -1,0 +1,22 @@
+# Default Pagedoctor Content Element Rendering Definition
+lib.pagedoctorViews = FLUIDTEMPLATE
+lib.pagedoctorViews {
+    templateName = Default
+    templateRootPaths {
+        0 = EXT:pagedoctor/Resources/Private/Templates/Types/
+    }
+    partialRootPaths {
+        0 = EXT:pagedoctor/Resources/Private/Partials/Types/
+    }
+    layoutRootPaths {
+        0 = EXT:pagedoctor/Resources/Private/Layouts/Types/
+    }
+    dataProcessing {
+        1312757633 = Atkins\Pagedoctor\DataProcessing\ProjectMappingProcessor
+        1312757633 {
+            mapping = EXT:pagedoctor/Resources/Private/Schema/ProjectMapping.json
+            context =
+            as = pagedoctor
+        }
+    }
+}

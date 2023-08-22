@@ -1,0 +1,2 @@
+# cat=pagedoctor/secret; type=string; label=Secret used to authenticate Pagedoctor communications.
+secret =

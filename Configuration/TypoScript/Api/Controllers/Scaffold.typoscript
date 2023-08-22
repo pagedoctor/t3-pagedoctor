@@ -1,0 +1,5 @@
+pagedoctor_scaffold < pagedoctor_api
+pagedoctor_scaffold.typeNum = 1930611295
+pagedoctor_scaffold.10.userFunc = Atkins\Pagedoctor\Controller\ScaffoldController->ingress
+pagedoctor_scaffold.10.action = create
+pagedoctor_scaffold.10.schema = scaffold.json
