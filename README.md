@@ -1,5 +1,14 @@
 # Willkommen bei Pagedoctor für das TYPO3 CMS
 
+## Inhaltsverzeichnis
+
+- [Was ist Pagedoctor?](#was-ist-pagedoctor)
+- [Erweiterungen](#erweiterungen)
+- [Einführung](#einfhrung)
+- [Mitwirken](#mitwirken)
+- [Lizenz](#lizenz)
+- [Markenrichtlinie](#markenrichtlinie)
+
 ## Was ist Pagedoctor?
 
 Pagedoctor ist ein Codegenerator zur einfachen Verwaltung und Bereitstellung von Inhaltselementen für das TYPO3 CMS.
