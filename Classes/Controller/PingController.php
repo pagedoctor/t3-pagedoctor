@@ -21,7 +21,7 @@ final class PingController extends ApiController
 
     protected function loadData(): void
     {
-        $this->version = \Composer\InstalledVersions::getVersionRanges('atkins/t3-pagedoctor');
+        $this->version = \Composer\InstalledVersions::getVersionRanges('pagedoctor/t3-pagedoctor');
         $this->systemVersion = \Composer\InstalledVersions::getVersionRanges('typo3/cms-core');
         $this->isComposerMode = Environment::isComposerMode();
     }
