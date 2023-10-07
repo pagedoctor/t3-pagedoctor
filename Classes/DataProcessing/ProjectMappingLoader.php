@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Atkins\Pagedoctor\DataProcessing;
 
+use Atkins\Pagedoctor\DataProcessing\Exceptions\InvalidProjectMappingPathException;
 use http\Exception\InvalidArgumentException;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -35,9 +36,13 @@ class ProjectMappingLoader implements SingletonInterface
      * @param string $mappingPath unresolved path to mapping
      * @return \stdClass
      * @throws \TYPO3\CMS\Core\Package\Exception
+     * @throws InvalidProjectMappingPathException
      */
     private function loadMappingFromPath(string $mappingPath): \stdClass
     {
+        if (is_null($mappingPath) || empty($mappingPath)) {
+            throw new InvalidProjectMappingPathException("No proper project mapping path found. Did you cleared your cache?");
+        }
         # TODO: add caching here
         $absolutePath = ExtensionManagementUtility::resolvePackagePath($mappingPath);
         $json = file_get_contents($absolutePath);

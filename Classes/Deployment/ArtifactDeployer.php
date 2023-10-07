@@ -99,6 +99,6 @@ class ArtifactDeployer
 
     private function artifactFilepath($artifactFilename): string
     {
-        return $this->artifactsPath() . 'ArtifactDeployer.php/' . $this->sanitizeFilename($artifactFilename);
+        return $this->artifactsPath() . '/' . $this->sanitizeFilename($artifactFilename);
     }
 }
