@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "api_version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "examples": [
+        "success",
+        "error"
+      ],
+      "pattern": "^success|error$"
+    },
+    "exception": {
+      "type": "string",
+      "examples": [
+        "SignatureMismatchException"
+      ]
+    },
+    "message": {
+      "type": "string",
+      "examples": [
+        "Provided signature was invalid"
+      ]
+    },
+    "envelope": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "system_version": {
+          "type": "string"
+        },
+        "is_composer_mode": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "version",
+        "system_version",
+        "is_composer_mode"
+      ]
+    }
+  },
+  "required": [
+    "api_version",
+    "status",
+    "exception",
+    "message",
+    "envelope"
+  ]
+}

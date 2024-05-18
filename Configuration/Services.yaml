@@ -7,17 +7,35 @@ services:
   Atkins\Pagedoctor\:
     resource: '../Classes/*'
 
-  Atkins\Pagedoctor\Controller\PingController:
+  cache.pagedoctor:
+    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
+    factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
+    arguments: ['pagedoctor']
+
+  Atkins\Pagedoctor\Api\Controllers\PingController:
     public: true
 
-  Atkins\Pagedoctor\Controller\DeploymentController:
+  Atkins\Pagedoctor\Api\Controllers\ArtifactController:
     public: true
 
-  Atkins\Pagedoctor\Controller\ScaffoldController:
+  Atkins\Pagedoctor\Api\Controllers\ScaffoldController:
     public: true
 
-  Atkins\Pagedoctor\Backend\Preview\PagedoctorContentPreviewRenderer:
+  Atkins\Pagedoctor\Api\Controllers\Deployment\DeployerService:
+    public: true
+
+  Atkins\Pagedoctor\Backend\Preview\ContentPreviewRenderer:
     public: true
 
   Atkins\Pagedoctor\DataProcessing\ProjectMappingProcessor:
     public: true
+
+  Atkins\Pagedoctor\Backend\Filters\ContentUsedOnPageFilter:
+    tags:
+      - name: event.listener
+        identifier: 'pagedoctor/view/content-used-on-page'
+
+  Atkins\Pagedoctor\Mapping\ProjectMappingLoader:
+    public: true
+    arguments:
+      - '@cache.pagedoctor'

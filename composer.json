@@ -2,7 +2,7 @@
   "name": "pagedoctor/t3-pagedoctor",
   "type": "typo3-cms-extension",
   "description": "Pagedoctor - Rapidly build and deploy content elements for TYPO3 CMS without one line of code.",
-  "license": "GPL-2.0-or-later",
+  "license": "MIT",
   "keywords": [
     "TYPO3 CMS",
     "Content Elements",
