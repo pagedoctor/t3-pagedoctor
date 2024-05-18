@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "artifact_filename": {
+      "type": "string",
+      "default": "",
+      "examples": [
+        "pagedoctor-test-ce-1.0.1.zip"
+      ],
+      "pattern": "^pagedoctor-[a-z0-9]((-{0,2})[a-z0-9.]+)*"
+    },
+    "checksum": {
+      "type": "string",
+      "default": "",
+      "examples": [
+        "b10778e2d2693691bfdbef9c0f6e47e42c4b1be09edb0168f2feb24e1c97a1d0"
+      ],
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "zip_contents": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "artifact_filename",
+    "checksum",
+    "zip_contents"
+  ]
+}

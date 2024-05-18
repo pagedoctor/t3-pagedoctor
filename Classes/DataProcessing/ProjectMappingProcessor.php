@@ -1,27 +1,38 @@
-<?php
+<?php declare(strict_types=1);
 
-declare(strict_types=1);
-
-/*
- * Copyright 2008-2023 by Colin Atkins.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
+#
+# MIT License
+#
+# Copyright (c) 2024 Colin Atkins
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+#
 
 namespace Atkins\Pagedoctor\DataProcessing;
 
-use Atkins\Pagedoctor\Helpers\FieldHelpers;
+use Atkins\Pagedoctor\Data\Models\Content;
+use Atkins\Pagedoctor\Data\Models\SimpleTypes\Record;
+use ScssPhp\ScssPhp\Formatter\Debug;
+use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-
 
 class ProjectMappingProcessor implements DataProcessorInterface
 {
@@ -30,12 +41,8 @@ class ProjectMappingProcessor implements DataProcessorInterface
         $targetVariableName = $cObj->stdWrapValue('as', $processorConfiguration, 'pagedoctor');
         $record = $processedData['data'];
 
-        // Load project mapping field definition for this content type.
-        $projectMappingLoader = GeneralUtility::makeInstance(ProjectMappingLoader::class);
-        $fieldDefinition = $projectMappingLoader->findFieldDefinition($record['CType']);
-
-        // Map records to target template variable.
-        $processedData[$targetVariableName] = FieldHelpers::mapRecordToFields($record, $fieldDefinition);
+        $content = Content::initialize(new Record($record));
+        $processedData[$targetVariableName] = $content->transform()->toArray();
 
         return $processedData;
     }
